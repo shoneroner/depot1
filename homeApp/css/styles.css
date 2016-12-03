@@ -1,0 +1,25 @@
+html { 
+  background: url(../img/3d.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+body{
+	background: transparent;
+}
+
+.item {height: 150px; background: #777; padding: 20px; margin: 10px; border-bottom: 5px solid transparent; box-sizing: border-box;}
+.item a {text-decoration: none; color: #000;}
+.item a:hover {color: #fff;}
+.item .path {font-style: italic;color:#fff;font-size: 0.8em;}
+.item .title {text-transform: uppercase;margin-top: 20px; color: #fff;}
+.item .date {font-size: 0.8em;}
+
+.selected {
+	border-bottom: 50px solid #fff;
+	webkit-transition : border 200ms ease-in;
+	moz-transition : border 200ms ease-in;
+	-o-transition : border 200ms ease-in;
+  	transition : border 200ms ease-in;
+}
