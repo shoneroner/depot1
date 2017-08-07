@@ -2,26 +2,41 @@
 
 class Folder {
 
+	var $id;
+
+	public function __construct()
+	{
+		$this->id = $id;
+	}
+
+	public function setId($id)
+	{
+		$this->id = $id;
+	}
+
+	public function getId($id)
+	{
+		return $this->id;
+	}
+
 	public static function getProjects($directory)
 	{
 		
-		$admin_folders = array('..', '.','phpmyadmin', 'homeApp');
-		$items = array_diff(scandir($directory), $admin_folders);
+		$items = array_diff(scandir($directory), _HIDDEN_FOLDERS_);
 
 		foreach ($items as $index => $value) {
+
 			if(is_dir($value)) {
-				$cleans_items['dirs'][$index]['name'] = $value;
-				$cleans_items['dirs'][$index]['date'] = date("d M Y H:i:s.", filemtime($value));
-				$cleans_items['dirs'][$index]['weight'] = disk_total_space($directory.'/'.$value);
-			} else {
-				$cleans_items['files'][$index]['name'] = $value;
-				$cleans_items['files'][$index]['date'] = date("d M Y H:i:s.", filemtime($value));
-				$cleans_items['files'][$index]['weight'] = disk_total_space($directory.'/'.$value);
+				
+				$items['dirs'][$index]['name'] 	= $value;
+				$items['dirs'][$index]['date'] 	= date("d M Y H:i:s", filemtime($value));
+				$items['dirs'][$index]['weight'] = Tools::convertOctets(Tools::GetSize(realpath($value)));
+
 			}
+
 		}
 
-		return $cleans_items;
+		return $items;
 	}
-
 }
 
